@@ -1,0 +1,6 @@
+framework module NBLSideSlipFilter {
+  umbrella header "NBLSideSlipFilter-umbrella.h"
+
+  export *
+  module * { export * }
+}
