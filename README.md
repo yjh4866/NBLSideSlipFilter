@@ -5,11 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/NBLSideSlipFilter.svg?style=flat)](https://cocoapods.org/pods/NBLSideSlipFilter)
 [![Platform](https://img.shields.io/cocoapods/p/NBLSideSlipFilter.svg?style=flat)](https://cocoapods.org/pods/NBLSideSlipFilter)
 
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+
 
 ## Installation
 
@@ -19,6 +21,14 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'NBLSideSlipFilter'
 ```
+
+## 用法
+![NBLShareView_1](https://github.com/yjh4866/NBLSideSlipFilter/blob/master/screenshots/code_1.jpg?raw=true)
+
+### 预览 Preview
+
+![NBLShareView_1](https://github.com/yjh4866/NBLSideSlipFilter/blob/master/screenshots/screenshots_1.jpg?raw=true)
+
 
 ## Author
 
