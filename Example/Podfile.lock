@@ -1,5 +1,5 @@
 PODS:
-  - NBLSideSlipFilter (0.1.0):
+  - NBLSideSlipFilter (0.1.1):
     - SDWebImage
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NBLSideSlipFilter: 11c2c77ba6849acebbbc94acf8ee930efa400f04
+  NBLSideSlipFilter: 243f798d0de17c434dfc9207f663a4bdd01b1cbd
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
 
 PODFILE CHECKSUM: dc8fb4acb928483901948de5ff3235a4580bbeaf

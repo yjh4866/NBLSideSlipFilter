@@ -43,7 +43,30 @@
 - (IBAction)clickOK:(id)sender
 {
     if ([NBLSideSlipFilter sharedInstance].blockClickOK) {
-        [NBLSideSlipFilter sharedInstance].blockClickOK();
+        NSMutableString *mstrParameter = [NSMutableString string];
+        // 遍历分组
+        for (id<NBLSSFGroup> group in self.dataList) {
+            if (group.key.length > 0) {
+                // 拼接分组参数
+                NSString *parameterString = [group.key stringByAppendingString:@"="];
+                for (id<NBLSSFItem> item in group.itemList) {
+                    // 只拼接选中的且Id存在的项
+                    if (item.selected && item.itemId.length > 0) {
+                        parameterString = [parameterString stringByAppendingFormat:@"%@,", item.itemId];
+                    }
+                }
+                // 删除多余的逗号
+                if (parameterString.length > group.key.length+1) {
+                    parameterString = [parameterString substringToIndex:parameterString.length-1];
+                }
+                [mstrParameter appendFormat:@"&%@", parameterString];
+            }
+        }
+        // 删除多余的“&”符号
+        if (mstrParameter.length > 0) {
+            [mstrParameter deleteCharactersInRange:NSMakeRange(0, 1)];
+        }
+        [NBLSideSlipFilter sharedInstance].blockClickOK(mstrParameter);
     }
 }
 

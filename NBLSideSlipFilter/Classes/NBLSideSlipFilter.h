@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray<id<NBLSSFGroup>> *dataList;
 
 @property (nonatomic, copy) void(^blockClickClose)(void);
-@property (nonatomic, copy) void(^blockClickOK)(void);
+@property (nonatomic, copy) void(^blockClickOK)(NSString *parameterString);
 
 + (instancetype)sharedInstance;
 

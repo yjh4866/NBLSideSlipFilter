@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL onlySingleSelection;
 @property (nonatomic, readonly) NSArray<id<NBLSSFItem>> *itemList;
 
+@property (nonatomic, readonly) NSString *key;
+
 @end
 
 @interface NBLSSFGroup : NSObject <NBLSSFGroup>
@@ -26,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL showIcon;
 @property (nonatomic, assign) BOOL onlySingleSelection;
 @property (nonatomic, strong) NSArray<id<NBLSSFItem>> *itemList;
+
+@property (nonatomic, strong) NSString *key;
 
 @end
 

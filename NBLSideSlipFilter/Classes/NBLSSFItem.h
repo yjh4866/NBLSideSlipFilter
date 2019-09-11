@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *iconUrl;
 
+@property (nonatomic, readonly) NSString *itemId;
+
 @end
 
 @interface NBLSSFItem : NSObject <NBLSSFItem>
@@ -23,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL selected;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *iconUrl;
+
+@property (nonatomic, strong) NSString *itemId;
 
 @end
 

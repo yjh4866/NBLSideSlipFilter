@@ -19,6 +19,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [NBLSideSlipFilter sharedInstance].blockClickOK = ^(NSString * _Nonnull parameterString) {
+        NSLog(@"%@", parameterString);
+    };
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,25 +40,32 @@
         NBLSSFItem *item00 = [[NBLSSFItem alloc] init];
         item00.title = @"太原市";
         item00.selected = YES;
+        item00.itemId = @"1401";
         NBLSSFItem *item01 = [[NBLSSFItem alloc] init];
         item01.title = @"大同市";
+        item01.itemId = @"1402";
         NBLSSFGroup *group0 = [[NBLSSFGroup alloc] init];
         group0.title = @"星级";
+        group0.key = @"star";
         group0.itemList = @[item00, item01];
         //
         NBLSSFItem *item10 = [[NBLSSFItem alloc] init];
         item10.iconUrl = @"http://192.168.1.177/icon/1.png";
         item10.title = @"山";
+        item10.itemId = @"10";
         NBLSSFItem *item11 = [[NBLSSFItem alloc] init];
         item11.iconUrl = @"http://192.168.1.177/icon/2.png";
         item11.title = @"博物馆";
         item11.selected = YES;
+        item11.itemId = @"11";
         NBLSSFItem *item12 = [[NBLSSFItem alloc] init];
         item12.iconUrl = @"http://192.168.1.177/icon/2.png";
         item12.title = @"科技馆";
+        item12.itemId = @"12";
         NBLSSFGroup *group1 = [[NBLSSFGroup alloc] init];
         group1.title = @"分类";
         group1.showIcon = YES;
+        group1.key = @"category";
         group1.onlySingleSelection = YES;
         group1.itemList = @[item10, item11, item12];
         //
