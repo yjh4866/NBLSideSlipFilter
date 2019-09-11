@@ -20,8 +20,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    [NBLSideSlipFilter sharedInstance].blockClickOK = ^(NSString * _Nonnull parameterString) {
+    [NBLSideSlipFilter sharedInstance].blockClickClose = ^BOOL{
+        return NO;
+    };
+    [NBLSideSlipFilter sharedInstance].blockClickOK = ^BOOL(NSString * _Nonnull parameterString) {
         NSLog(@"%@", parameterString);
+        return YES;
     };
 }
 

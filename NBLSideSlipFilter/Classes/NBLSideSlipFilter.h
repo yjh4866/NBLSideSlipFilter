@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL showing;
 @property (nonatomic, strong) NSArray<id<NBLSSFGroup>> *dataList;
 
-@property (nonatomic, copy) void(^blockClickClose)(void);
-@property (nonatomic, copy) void(^blockClickOK)(NSString *parameterString);
+@property (nonatomic, copy) BOOL(^blockClickClose)(void);
+@property (nonatomic, copy) BOOL(^blockClickOK)(NSString *parameterString);
 
 + (instancetype)sharedInstance;
 

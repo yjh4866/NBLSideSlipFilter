@@ -35,38 +35,46 @@
 }
 - (IBAction)clickClose:(id)sender
 {
-    [[NBLSideSlipFilter sharedInstance] closeAnimated:YES];
+    BOOL close = YES;
     if ([NBLSideSlipFilter sharedInstance].blockClickClose) {
-        [NBLSideSlipFilter sharedInstance].blockClickClose();
+        close = [NBLSideSlipFilter sharedInstance].blockClickClose();
+    }
+    if (close) {
+        [[NBLSideSlipFilter sharedInstance] closeAnimated:YES];
     }
 }
 - (IBAction)clickOK:(id)sender
 {
+    BOOL close = YES;
     if ([NBLSideSlipFilter sharedInstance].blockClickOK) {
         NSMutableString *mstrParameter = [NSMutableString string];
         // 遍历分组
         for (id<NBLSSFGroup> group in self.dataList) {
             if (group.key.length > 0) {
                 // 拼接分组参数
-                NSString *parameterString = [group.key stringByAppendingString:@"="];
+                NSString *parameterString = @"";
                 for (id<NBLSSFItem> item in group.itemList) {
-                    // 只拼接选中的且Id存在的项
-                    if (item.selected && item.itemId.length > 0) {
-                        parameterString = [parameterString stringByAppendingFormat:@"%@,", item.itemId];
+                    if (item.itemId.length > 0) {
+                        if (item.selected) {
+                            parameterString = [parameterString stringByAppendingFormat:@"%@,", item.itemId];
+                        }
                     }
                 }
                 // 删除多余的逗号
-                if (parameterString.length > group.key.length+1) {
+                if (parameterString.length > 0) {
                     parameterString = [parameterString substringToIndex:parameterString.length-1];
                 }
-                [mstrParameter appendFormat:@"&%@", parameterString];
+                [mstrParameter appendFormat:@"&%@=%@", group.key, parameterString];
             }
         }
         // 删除多余的“&”符号
         if (mstrParameter.length > 0) {
             [mstrParameter deleteCharactersInRange:NSMakeRange(0, 1)];
         }
-        [NBLSideSlipFilter sharedInstance].blockClickOK(mstrParameter);
+        close = [NBLSideSlipFilter sharedInstance].blockClickOK(mstrParameter);
+    }
+    if (close) {
+        [[NBLSideSlipFilter sharedInstance] closeAnimated:YES];
     }
 }
 
