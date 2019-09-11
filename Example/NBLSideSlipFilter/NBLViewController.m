@@ -48,11 +48,15 @@
         NBLSSFItem *item11 = [[NBLSSFItem alloc] init];
         item11.iconUrl = @"http://192.168.1.177/icon/2.png";
         item11.title = @"博物馆";
+        item11.selected = YES;
+        NBLSSFItem *item12 = [[NBLSSFItem alloc] init];
+        item12.iconUrl = @"http://192.168.1.177/icon/2.png";
+        item12.title = @"科技馆";
         NBLSSFGroup *group1 = [[NBLSSFGroup alloc] init];
         group1.title = @"分类";
         group1.showIcon = YES;
         group1.onlySingleSelection = YES;
-        group1.itemList = @[item10, item11];
+        group1.itemList = @[item10, item11, item12];
         //
         [NBLSideSlipFilter sharedInstance].dataList = @[group0, group1];
         [[NBLSideSlipFilter sharedInstance] showIn:self animated:YES];

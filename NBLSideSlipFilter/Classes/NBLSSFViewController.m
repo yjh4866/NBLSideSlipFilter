@@ -33,10 +33,11 @@
 {
     [[NBLSideSlipFilter sharedInstance] closeAnimated:YES];
 }
-- (IBAction)clickReset:(id)sender
+- (IBAction)clickClose:(id)sender
 {
-    if ([NBLSideSlipFilter sharedInstance].blockClickReset) {
-        [NBLSideSlipFilter sharedInstance].blockClickReset();
+    [[NBLSideSlipFilter sharedInstance] closeAnimated:YES];
+    if ([NBLSideSlipFilter sharedInstance].blockClickClose) {
+        [NBLSideSlipFilter sharedInstance].blockClickClose();
     }
 }
 - (IBAction)clickOK:(id)sender
