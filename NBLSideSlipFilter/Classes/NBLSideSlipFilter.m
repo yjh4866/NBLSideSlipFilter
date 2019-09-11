@@ -11,7 +11,6 @@
 
 @interface NBLSideSlipFilter ()
 @property (nonatomic, assign) BOOL showing;
-@property (nonatomic, assign) BOOL animated;
 @property (nonatomic, strong) NBLSSFViewController *ssfVC;
 @end
 
@@ -46,10 +45,6 @@
     [viewController addChildViewController:self.ssfVC];
     [viewController.view addSubview:self.ssfVC.view];
     self.showing = YES;
-    // 点击背景关闭
-    self.animated = animated;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBackground:)];
-    [self.ssfVC.view addGestureRecognizer:tap];
     // 添加约束
     self.ssfVC.view.translatesAutoresizingMaskIntoConstraints = NO;
     NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:viewController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.ssfVC.view attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
@@ -93,16 +88,6 @@
     } else {
         animations();
         completion(YES);
-    }
-}
-
-
-#pragma mark - Event
-
-- (void)tapBackground:(UITapGestureRecognizer *)tap
-{
-    if (!CGRectContainsPoint(self.ssfVC.collectionView.frame, [tap locationInView:tap.view])) {
-        [self closeAnimated:self.animated];
     }
 }
 

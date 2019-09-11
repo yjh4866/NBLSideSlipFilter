@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NBLSideSlipFilter'
-  s.version          = '0.1.0'
-  s.summary          = '侧滑筛选功能。filter view.'
+  s.version          = '0.1.1'
+  s.summary          = '侧滑的筛选器视图。filter view.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-从侧面滑出筛选视图的功能。Filter view slip from side.
+从侧面滑出的筛选视图的功能。Filter view slip from side.
                        DESC
 
   s.homepage         = 'https://github.com/yjh4866/NBLSideSlipFilter'

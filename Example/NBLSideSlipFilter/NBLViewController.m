@@ -51,6 +51,7 @@
         NBLSSFGroup *group1 = [[NBLSSFGroup alloc] init];
         group1.title = @"分类";
         group1.showIcon = YES;
+        group1.onlySingleSelection = YES;
         group1.itemList = @[item10, item11];
         //
         [NBLSideSlipFilter sharedInstance].dataList = @[group0, group1];

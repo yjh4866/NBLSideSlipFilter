@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) BOOL showIcon;
+@property (nonatomic, readonly) BOOL onlySingleSelection;
 @property (nonatomic, readonly) NSArray<id<NBLSSFItem>> *itemList;
 
 @end
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) BOOL showIcon;
+@property (nonatomic, assign) BOOL onlySingleSelection;
 @property (nonatomic, strong) NSArray<id<NBLSSFItem>> *itemList;
 
 @end

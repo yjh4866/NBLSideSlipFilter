@@ -23,9 +23,6 @@
         // KVO
         [self addObserver:self forKeyPath:@"ssfItem"
                   options:NSKeyValueObservingOptionNew context:nil];
-        //
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCell:)];
-        [self addGestureRecognizer:tap];
     }
     return self;
 }
@@ -53,12 +50,6 @@
         [self.imageViewIcon sd_setImageWithURL:[NSURL URLWithString:self.ssfItem.iconUrl]];
         self.labelName.text = self.ssfItem.title;
     }
-}
-
-- (void)tapCell:(UITapGestureRecognizer *)tap
-{
-    self.ssfItem.selected = !self.ssfItem.selected;
-    self.ssfItem = self.ssfItem;
 }
 
 @end

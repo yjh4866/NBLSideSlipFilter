@@ -29,6 +29,10 @@
 
 #pragma mark - Events
 
+- (IBAction)clickBG:(id)sender
+{
+    [[NBLSideSlipFilter sharedInstance] closeAnimated:YES];
+}
 - (IBAction)clickReset:(id)sender
 {
     if ([NBLSideSlipFilter sharedInstance].blockClickReset) {
@@ -71,13 +75,40 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NBLSSFCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NBLSSFCell" forIndexPath:indexPath];
-    cell.ssfItem = self.dataList[indexPath.section].itemList[indexPath.row];
-    return cell;
+    NBLSSFCell *ssfCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NBLSSFCell" forIndexPath:indexPath];
+    ssfCell.ssfItem = self.dataList[indexPath.section].itemList[indexPath.row];
+    return ssfCell;
 }
 
 
 #pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NBLSSFCell *ssfCell = (NBLSSFCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    // 分组只能单选
+    id<NBLSSFGroup> group = self.dataList[indexPath.section];
+    if (group.onlySingleSelection) {
+        // 已经选择该Cell则不必处理
+        if (ssfCell.ssfItem.selected) {
+            return;
+        }
+        ssfCell.ssfItem.selected = YES;
+        // 其他Cell改为未选中
+        for (id<NBLSSFItem> item in group.itemList) {
+            if (item != ssfCell.ssfItem) {
+                item.selected = NO;
+            }
+        }
+        // 刷新该分组
+        [collectionView reloadData];
+    }
+    // 分组可多选
+    else {
+        ssfCell.ssfItem.selected = !ssfCell.ssfItem.selected;
+        ssfCell.ssfItem = ssfCell.ssfItem;
+    }
+}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
