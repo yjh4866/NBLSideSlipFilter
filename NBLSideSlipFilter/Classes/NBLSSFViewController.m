@@ -75,6 +75,21 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
+    // 各分组至少有一个选中项
+    for (id<NBLSSFGroup> group in self.dataList) {
+        // 检查该分组是否存在选中项
+        BOOL existSel = NO;
+        for (id<NBLSSFItem> item in group.itemList) {
+            if (item.selected) {
+                existSel = YES;
+                break;
+            }
+        }
+        // 该分组不存在选中项，且存在可选项，则默认选中第一项
+        if (!existSel && group.itemList.count > 0) {
+            group.itemList[0].selected = YES;
+        }
+    }
     return self.dataList.count;
 }
 

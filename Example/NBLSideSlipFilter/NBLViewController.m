@@ -39,7 +39,6 @@
         //
         NBLSSFItem *item00 = [[NBLSSFItem alloc] init];
         item00.title = @"太原市";
-        item00.selected = YES;
         item00.itemId = @"1401";
         NBLSSFItem *item01 = [[NBLSSFItem alloc] init];
         item01.title = @"大同市";
@@ -56,7 +55,6 @@
         NBLSSFItem *item11 = [[NBLSSFItem alloc] init];
         item11.iconUrl = @"http://192.168.1.177/icon/2.png";
         item11.title = @"博物馆";
-        item11.selected = YES;
         item11.itemId = @"11";
         NBLSSFItem *item12 = [[NBLSSFItem alloc] init];
         item12.iconUrl = @"http://192.168.1.177/icon/2.png";
