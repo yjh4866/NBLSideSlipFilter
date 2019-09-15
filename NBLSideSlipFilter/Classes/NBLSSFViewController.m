@@ -47,7 +47,7 @@
 {
     BOOL close = YES;
     if ([NBLSideSlipFilter sharedInstance].blockClickOK) {
-        NSMutableString *mstrParameter = [NSMutableString string];
+        NSMutableDictionary *mdicParameter = [NSMutableDictionary dictionary];
         // 遍历分组
         for (id<NBLSSFGroup> group in self.dataList) {
             if (group.key.length > 0) {
@@ -56,22 +56,18 @@
                 for (id<NBLSSFItem> item in group.itemList) {
                     if (item.itemId.length > 0) {
                         if (item.selected) {
-                            parameterString = [parameterString stringByAppendingFormat:@"%@,", item.itemId];
+                            parameterString = [parameterString stringByAppendingFormat:@",%@", item.itemId];
                         }
                     }
                 }
                 // 删除多余的逗号
                 if (parameterString.length > 0) {
-                    parameterString = [parameterString substringToIndex:parameterString.length-1];
+                    parameterString = [parameterString substringFromIndex:1];
                 }
-                [mstrParameter appendFormat:@"&%@=%@", group.key, parameterString];
+                mdicParameter[group.key] = parameterString;
             }
         }
-        // 删除多余的“&”符号
-        if (mstrParameter.length > 0) {
-            [mstrParameter deleteCharactersInRange:NSMakeRange(0, 1)];
-        }
-        close = [NBLSideSlipFilter sharedInstance].blockClickOK(mstrParameter);
+        close = [NBLSideSlipFilter sharedInstance].blockClickOK(mdicParameter);
     }
     if (close) {
         [[NBLSideSlipFilter sharedInstance] closeAnimated:YES];

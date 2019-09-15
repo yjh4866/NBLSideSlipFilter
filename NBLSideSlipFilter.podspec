@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NBLSideSlipFilter'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = '侧滑的筛选器视图。filter view.'
 
 # This description is used to generate tags and improve search results.

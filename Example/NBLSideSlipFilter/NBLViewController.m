@@ -23,8 +23,8 @@
     [NBLSideSlipFilter sharedInstance].blockClickClose = ^BOOL{
         return NO;
     };
-    [NBLSideSlipFilter sharedInstance].blockClickOK = ^BOOL(NSString * _Nonnull parameterString) {
-        NSLog(@"%@", parameterString);
+    [NBLSideSlipFilter sharedInstance].blockClickOK = ^BOOL(NSDictionary * _Nonnull parameterDictionary) {
+        NSLog(@"%@", parameterDictionary);
         return YES;
     };
 }
