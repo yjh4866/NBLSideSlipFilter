@@ -20,6 +20,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    [NBLSideSlipFilter sharedInstance].blockParameterString = ^NSString * _Nonnull(NBLSSFItem * _Nonnull item) {
+        return item.title;
+    };
     [NBLSideSlipFilter sharedInstance].blockClickClose = ^BOOL{
         return NO;
     };

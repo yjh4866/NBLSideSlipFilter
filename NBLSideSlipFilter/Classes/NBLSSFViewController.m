@@ -49,22 +49,24 @@
     if ([NBLSideSlipFilter sharedInstance].blockClickOK) {
         NSMutableDictionary *mdicParameter = [NSMutableDictionary dictionary];
         // 遍历分组
+        NSString*(^block)(NBLSSFItem*) = [NBLSideSlipFilter sharedInstance].blockParameterString;
         for (id<NBLSSFGroup> group in self.dataList) {
             if (group.key.length > 0) {
-                // 拼接分组参数
-                NSString *parameterString = @"";
+                // 收集被选中的项
+                NSMutableArray<NSString*> *marrItem = [NSMutableArray array];
                 for (id<NBLSSFItem> item in group.itemList) {
-                    if (item.itemId.length > 0) {
-                        if (item.selected) {
-                            parameterString = [parameterString stringByAppendingFormat:@",%@", item.itemId];
+                    if (item.selected) {
+                        if (block) {
+                            [marrItem addObject:block(item)];
+                        } else {
+                            if (item.itemId) {
+                                [marrItem addObject:item.itemId];
+                            }
                         }
                     }
                 }
-                // 删除多余的逗号
-                if (parameterString.length > 0) {
-                    parameterString = [parameterString substringFromIndex:1];
-                }
-                mdicParameter[group.key] = parameterString;
+                // 用字符串拼接被选中项
+                mdicParameter[group.key] = [marrItem componentsJoinedByString:@","];
             }
         }
         close = [NBLSideSlipFilter sharedInstance].blockClickOK(mdicParameter);
